@@ -1,8 +1,11 @@
 package org.andercabrera.cotizador.model;
 
+import org.apache.tomcat.util.http.parser.MediaType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +14,7 @@ import jakarta.persistence.Table;
 public class User {
   @Id
   @Column(name = "id_user")
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   @Column(name = "username")

@@ -29,16 +29,17 @@ public class Package {
   private int length;
   
   @ManyToOne
-  @JoinColumn(name = "id_country")
-  private int idCountryOrigin;
+  @JoinColumn(name = "id_country_origin")
+  private Country idCountryOrigin;
   
   @ManyToOne
-  @JoinColumn(name = "id_country")
-  private int idCountryDestination;
+  @JoinColumn(name = "id_country_destination")
+  private Country idCountryDestination;
 
   public Package() {}
 
-  public Package(int id, int weight, int width, int height, int length, int idCountryOrigin, int idCountryDestination) {
+  public Package(int id, int weight, int width, int height, int length, Country idCountryOrigin,
+      Country idCountryDestination) {
     this.id = id;
     this.weight = weight;
     this.width = width;
@@ -88,21 +89,21 @@ public class Package {
     this.length = length;
   }
 
-  public int getIdCountryOrigin() {
+  public Country getIdCountryOrigin() {
     return idCountryOrigin;
   }
 
-  public void setIdCountryOrigin(int idCountryOrigin) {
+  public void setIdCountryOrigin(Country idCountryOrigin) {
     this.idCountryOrigin = idCountryOrigin;
   }
 
-  public int getIdCountryDestination() {
+  public Country getIdCountryDestination() {
     return idCountryDestination;
   }
 
-  public void setIdCountryDestination(int idCountryDestination) {
+  public void setIdCountryDestination(Country idCountryDestination) {
     this.idCountryDestination = idCountryDestination;
-  };
+  }
 
   
 }

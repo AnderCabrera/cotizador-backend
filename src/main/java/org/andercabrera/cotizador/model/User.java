@@ -1,7 +1,5 @@
 package org.andercabrera.cotizador.model;
 
-import org.apache.tomcat.util.http.parser.MediaType;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

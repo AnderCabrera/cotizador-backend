@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,18 +20,19 @@ public class Country {
   @Column(name = "country")
   private String country;
 
-  @Column(name = "region")
-  private String region;
+  @ManyToOne
+  @JoinColumn(name = "id_region")
+  private Region idRegion;
 
   @Column(name = "price")
   private int price;
 
   public Country() {}
 
-  public Country(int id, String country, String region, int price) {
+  public Country(int id, String country, Region idRegion, int price) {
     this.id = id;
     this.country = country;
-    this.region = region;
+    this.idRegion = idRegion;
     this.price = price;
   }
 
@@ -49,12 +52,12 @@ public class Country {
     this.country = country;
   }
 
-  public String getRegion() {
-    return region;
+  public Region getIdRegion() {
+    return idRegion;
   }
 
-  public void setRegion(String region) {
-    this.region = region;
+  public void setIdRegion(Region idRegion) {
+    this.idRegion = idRegion;
   }
 
   public int getPrice() {
@@ -64,6 +67,4 @@ public class Country {
   public void setPrice(int price) {
     this.price = price;
   }
-
-  
 }

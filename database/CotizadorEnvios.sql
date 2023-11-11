@@ -4,53 +4,52 @@
 USE CotizadorEnvios;
 
 DROP TABLE IF EXISTS dbo.users;
+DROP TABLE IF EXISTS dbo.regions;
 DROP TABLE IF EXISTS dbo.countries;
-DROP TABLE IF EXISTS dbo.packages;
 GO
 
 CREATE TABLE dbo.users (
 	id_user   INT 		    NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	username  VARCHAR(120)  NOT NULL,
-	sub_plan  VARCHAR(120)  NOT NULL,
+	user_plan VARCHAR(120)  NOT NULL,
 	password  VARCHAR(35)   NOT NULL
+);
+
+CREATE TABLE dbo.regions (
+	id_region  INT			 NOT NULL  IDENTITY(1, 1) PRIMARY KEY,
+	region     VARCHAR(120)  NOT NULL,
 );
 
 CREATE TABLE dbo.countries (
 	id_country  INT		      NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	country		VARCHAR(120)  NOT NULL,
-	region		VARCHAR(120)  NOT NULL,
-	price		INT			  NOT NULL
+	id_region	INT           NOT NULL,
+	price		INT			  NOT NULL,
+
+	-- Foreign Key
+	CONSTRAINT FK_regions_countries
+		FOREIGN KEY (id_region)
+			REFERENCES dbo.regions(id_region)
 );
 
-CREATE TABLE dbo.packages (
-	id_package			   INT  NOT NULL  IDENTITY(1, 1) PRIMARY KEY,
-	weight				   INT	NOT NULL,
-	width				   INT	NOT NULL,
-	height			       INT	NOT NULL,
-	length				   INT	NOT NULL,
-	id_country_origin      INT	NOT NULL,
-	id_country_destination INT	NOT NULL,
-	
-	-- Foreign keys
-	CONSTRAINT FK_origin_countries_packages
-		FOREIGN KEY (id_country_origin)
-			REFERENCES dbo.countries(id_country),
-	CONSTRAINT FK_destination_countries_packages
-		FOREIGN KEY (id_country_destination )
-			REFERENCES dbo.countries(id_country)
-);
-
-INSERT INTO dbo.users(username, sub_plan, password)
+INSERT INTO dbo.users(username, user_plan, password)
 	VALUES ('acabrera', 'Super Premium', '123'),
 		   ('John', 'Premium', '123');
 
-INSERT INTO dbo.countries(country, region, price)
-	VALUES ('Spain', 'Europe', 1000),
-		   ('Guatemala', 'Central America', 700);
+INSERT INTO dbo.regions(region)
+	VALUES ('Europe'),
+		   ('Central America'),
+		   ('Asia');
 
-INSERT INTO dbo.packages(weight, width, height, length, id_country_origin, id_country_destination)
-	VALUES (2, 4, 5, 8, 2, 1);
+INSERT INTO dbo.countries(country, id_region, price)
+	VALUES ('Spain', 1, 1000),
+		   ('Guatemala', 2, 700),
+		   ('Mexico', 2, 500),
+		   ('El Salvador', 2, 200),
+		   ('Honduras', 2, 300),
+		   ('Japón', 3, 2000);
+
 
 SELECT * FROM dbo.users;
+SELECT * FROM dbo.regions;
 SELECT * FROM dbo.countries;
-SELECT * FROM dbo.packages;

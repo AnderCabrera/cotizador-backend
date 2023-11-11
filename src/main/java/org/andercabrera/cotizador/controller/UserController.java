@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/users")
 public class UserController {
 
   @Autowired
   private UserService userService;
 
-  @GetMapping(value = "/users", produces = "application/json")
+  @GetMapping(value = "/", produces = "application/json")
   public List<User> getUsers() {
       return userService.list();
   }
   
-  @PostMapping(value = "/users/add", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
   public User save(@RequestBody User user) {
     return userService.save(user);
   }

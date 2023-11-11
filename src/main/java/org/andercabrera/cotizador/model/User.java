@@ -18,8 +18,8 @@ public class User {
   @Column(name = "username")
   private String username;
 
-  @Column(name = "sub_plan")
-  private String subPlan;
+  @Column(name = "user_plan")
+  private String userPlan;
 
   @Column(name = "password")
   private String password;
@@ -27,10 +27,10 @@ public class User {
   public User() {
   }
 
-  public User(int id, String username, String subPlan, String password) {
+  public User(int id, String username, String userPlan, String password) {
     this.id = id;
     this.username = username;
-    this.subPlan = subPlan;
+    this.userPlan = userPlan;
     this.password = password;
   }
 
@@ -50,12 +50,12 @@ public class User {
     this.username = username;
   }
 
-  public String getSubPlan() {
-    return subPlan;
+  public String getUserPlan() {
+    return userPlan;
   }
 
-  public void setSubPlan(String subPlan) {
-    this.subPlan = subPlan;
+  public void setUserPlan(String userPlan) {
+    this.userPlan = userPlan;
   }
 
   public String getPassword() {
@@ -65,6 +65,4 @@ public class User {
   public void setPassword(String password) {
     this.password = password;
   }
-
-  
 }

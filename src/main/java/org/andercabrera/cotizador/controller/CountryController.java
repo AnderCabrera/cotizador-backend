@@ -11,21 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/countries")
 public class CountryController {
 
   @Autowired
   private CountryService countryService;
 
-  @GetMapping(value = "/countries", produces = "application/json")
+  @GetMapping(value = "/", produces = "application/json")
   public List<Country> getCountries() {
       return countryService.list();
   }
 
-  @PostMapping(value = "/countries/add", produces = "application/json", consumes = "application/json")
+  @PostMapping(value = "/add", produces = "application/json", consumes = "application/json")
   public Country save(@RequestBody Country country) {
     return countryService.save(country);
   }

@@ -1,10 +1,8 @@
 package org.andercabrera.cotizador.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.andercabrera.cotizador.model.Country;
-import org.andercabrera.cotizador.model.ShippingRequest;
 import org.andercabrera.cotizador.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

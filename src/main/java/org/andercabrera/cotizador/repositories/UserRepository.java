@@ -1,6 +1,5 @@
 package org.andercabrera.cotizador.repositories;
 
-import org.andercabrera.cotizador.model.UserRequest;
 import org.andercabrera.cotizador.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

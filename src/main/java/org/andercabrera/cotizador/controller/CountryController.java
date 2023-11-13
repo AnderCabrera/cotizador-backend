@@ -1,12 +1,15 @@
 package org.andercabrera.cotizador.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.andercabrera.cotizador.model.Country;
+import org.andercabrera.cotizador.model.ShippingRequest;
 import org.andercabrera.cotizador.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +23,7 @@ public class CountryController {
 
   @GetMapping(value = "/", produces = "application/json")
   public List<Country> getCountries() {
-      return countryService.list();
+    return countryService.list();
   }
 
   @PostMapping(value = "/add", produces = "application/json", consumes = "application/json")

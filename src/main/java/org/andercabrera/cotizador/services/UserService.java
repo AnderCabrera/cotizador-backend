@@ -3,6 +3,8 @@ package org.andercabrera.cotizador.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.andercabrera.cotizador.exceptions.BadCredentialsException;
+import org.andercabrera.cotizador.model.UserRequest;
 import org.andercabrera.cotizador.model.User;
 import org.andercabrera.cotizador.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +52,29 @@ public class UserService {
     }
 
     return userOptional.get();
+  }
+
+  public User login(String username, String password) throws BadCredentialsException {
+    User user = userRepository.findByUsernameAndPassword(username, password);
+
+    if (user == null) {
+      throw new BadCredentialsException("User not found");
+    }
+
+    if (!user.getPassword().equals(password)) {
+      throw new BadCredentialsException("Invalid password");
+    }
+
+    return user;
+  }
+
+  public User register(User user) {
+    if (userRepository.findByUsername(user.getUsername()) != null) {
+      throw new ResponseStatusException(
+        HttpStatus.BAD_REQUEST, "Username already exists"
+      );
+    }
+    
+    return userRepository.save(user);
   }
 }

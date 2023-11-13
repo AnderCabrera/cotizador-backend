@@ -1,5 +1,5 @@
---CREATE DATABASE CotizadorEnvios;
---GO
+CREATE DATABASE CotizadorEnvios;
+GO
 
 USE CotizadorEnvios;
 
@@ -32,10 +32,6 @@ CREATE TABLE dbo.countries (
 			REFERENCES dbo.regions(id_region)
 );
 
-INSERT INTO dbo.users(username, user_plan, password)
-	VALUES ('acabrera', 'Super Premium', '123'),
-		   ('John', 'Premium', '123');
-
 INSERT INTO dbo.regions(region)
 	VALUES ('Europe'),
 		   ('Central America'),
@@ -47,6 +43,14 @@ INSERT INTO dbo.countries(country, id_region, price)
 		   ('Mexico', 2, 500),
 		   ('El Salvador', 2, 200),
 		   ('Honduras', 2, 300),
+		   ('Bélgica', 1, 2000),
+		   ('Croacia', 1, 1500),
+		   ('Mónaco', 1, 400),
+		   ('Polonia', 1, 700),
+		   ('Ucrania', 1, 1350),
+		   ('Israel', 3, 400),
+		   ('Qatar', 3, 700),
+		   ('Mongolia', 3, 1350),
 		   ('Japón', 3, 2000);
 
 
